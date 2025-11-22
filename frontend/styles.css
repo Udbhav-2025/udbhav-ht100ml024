@@ -1,0 +1,394 @@
+title {
+  text-align: center;
+}
+
+:root {
+  --bg: #f0f4f8;
+  /* Lighter blue-grey background */
+  --card: #ffffff;
+  --accent: #0077c2;
+  /* Brighter blue for accent/primary color */
+  --accent-2: #00a3ff;
+  --primary-btn: linear-gradient(90deg, var(--accent), var(--accent-2));
+  --primary-btn-hover: #005696;
+  --muted: #65748b;
+  --success: #10b981;
+  --danger: #ef4444;
+  --warning: #f59e0b;
+  --glass: rgba(255, 255, 255, 0.6);
+  /* Modern shadows for the "boxes" */
+  --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.08), 0 1px 2px 0 rgba(0, 0, 0, 0.04);
+  --shadow-lg: 0 18px 30px -10px rgba(2, 6, 23, 0.2), 0 8px 20px -8px rgba(2, 6, 23, 0.06);
+  --glass-border: rgba(2, 6, 23, 0.04);
+  --success-gradient: linear-gradient(90deg, #34d399, #10b981);
+}
+
+* {
+  box-sizing: border-box
+}
+
+body {
+  font-family: 'Inter', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  margin: 0;
+  background: var(--bg);
+  /* Use the new background variable */
+  color: #0f172a;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Import a webfont for nicer headings */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap');
+
+/* --- Layout --- */
+.container {
+  width: 1100px;
+  max-width: calc(100% - 40px);
+  margin: 0 auto;
+}
+
+.topbar {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid #e6eef6;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.topbar .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 0;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px
+}
+
+.brand .logo {
+  height: 32px
+}
+
+.brand h1 {
+  margin: 0;
+  font-size: 1.5rem;
+  color: var(--accent)
+}
+
+.brand .tag {
+  margin: 0;
+  font-size: 0.85rem;
+  color: var(--muted);
+  font-weight: 400
+}
+
+.nav a {
+  color: #334155;
+  text-decoration: none;
+  padding: 8px 12px;
+  border-radius: 6px;
+  transition: background 0.2s
+}
+
+.nav a:hover {
+  background: #e6eef6
+}
+
+/* Small title badge */
+.brand .badge {
+  font-size: 0.75rem;
+  color: white;
+  background: var(--accent);
+  padding: 6px 10px;
+  border-radius: 999px
+}
+
+/* Main Dashboard Grid */
+.main-grid {
+  display: grid;
+  grid-template-columns: 1.5fr 0.5fr;
+  /* Prediction form wider, About/Info narrower */
+  gap: 24px;
+  padding: 30px 0;
+}
+
+/* Card/Box Styling */
+.panel {
+  background: var(--card);
+  border-radius: 12px;
+  padding: 28px;
+  /* Slightly more padding */
+  box-shadow: var(--shadow-lg);
+  /* Use the larger, more defined shadow */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.panel:hover {
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.15), 0 10px 10px -5px rgba(0, 0, 0, 0.08);
+}
+
+.panel h2,
+.panel h3 {
+  margin-top: 0;
+  color: var(--accent)
+}
+
+.hero h2 {
+  color: var(--accent)
+}
+
+.hero p {
+  color: var(--muted);
+  margin: 10px 0
+}
+
+.features {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  color: var(--muted)
+}
+
+.features li {
+  background: #f3f8fb;
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-size: 0.9rem
+}
+
+/* --- Form Styling --- */
+.form-panel h3 {
+  margin-top: 0;
+  color: var(--accent)
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 18px
+}
+
+.field {
+  display: flex;
+  flex-direction: column
+}
+
+.field label {
+  font-weight: 600;
+  color: #334155;
+  font-size: 14px;
+  margin-bottom: 6px
+}
+
+/* Input Modernization */
+.field input,
+.field select {
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid #d1d5db;
+  background: #f9fafb;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  font-size: 14px;
+}
+
+.field input:focus,
+.field select:focus {
+  border-color: var(--accent);
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(0, 119, 194, 0.2);
+}
+
+.field input[disabled],
+.field select[disabled] {
+  opacity: 0.7
+}
+
+.actions {
+  grid-column: 1/-1;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin-top: 10px
+}
+
+/* --- Button Styling --- */
+.btn {
+  padding: 12px 20px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-weight: 700;
+  transition: background-color 0.2s, transform 0.1s;
+  font-size: 1rem;
+}
+
+.btn.primary {
+  background: var(--primary-btn);
+  color: white;
+  box-shadow: var(--shadow-sm);
+  border: none;
+}
+
+.btn.primary:hover {
+  background-color: var(--primary-btn-hover);
+}
+
+.btn:active {
+  transform: scale(0.98);
+}
+
+.btn:not(.primary) {
+  background: #e5e7eb;
+  color: #334155;
+}
+
+.btn:not(.primary):hover {
+  background: #d1d5db;
+}
+
+/* --- Result Card Styling (Doctor Dashboard Output) --- */
+.result-card {
+  margin-top: 24px;
+  padding: 25px;
+  border-radius: 12px;
+  border-left: 5px solid var(--accent);
+  background: #f9fbfd;
+  box-shadow: var(--shadow-sm);
+}
+
+.result-card h4 {
+  margin-top: 0;
+  color: #1e293b
+}
+
+.result-text {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 15px;
+  color: var(--accent)
+}
+
+.result-card .small {
+  font-size: 0.8rem;
+  color: var(--muted);
+  margin-top: 15px
+}
+
+/* Risk Meter */
+.meter {
+  height: 20px;
+  background: #e5e7eb;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-top: 8px;
+}
+
+.risk-bar {
+  height: 100%;
+  width: 0%;
+  transition: width 1s ease-out;
+}
+
+/* Risk colors */
+.risk-low {
+  background: linear-gradient(90deg, #86efac, #10b981)
+}
+
+.risk-medium {
+  background: linear-gradient(90deg, #fcd34d, #f59e0b)
+}
+
+.risk-high {
+  background: linear-gradient(90deg, #fb7185, #ef4444)
+}
+
+/* animated circular badge */
+.risk-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 72px;
+  height: 72px;
+  border-radius: 999px;
+  font-weight: 700;
+  color: #04263b;
+  box-shadow: var(--shadow-sm);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.6));
+}
+
+/* small helper for metric rows */
+.metric {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 0;
+  border-bottom: 1px dashed #eef3f7
+}
+
+.metric:last-child {
+  border-bottom: none
+}
+
+/* subtle entrance for panels */
+.panel {
+  opacity: 0;
+  transform: translateY(8px);
+  animation: panelIn 0.45s forwards cubic-bezier(.2, .9, .3, 1)
+}
+
+@keyframes panelIn {
+  to {
+    opacity: 1;
+    transform: none
+  }
+}
+
+/* Footer & About Section */
+.panel.about {
+  grid-column: 2 / 3;
+  /* Keep it in the side column */
+}
+
+/* Responsive adjustments (for completeness) */
+@media (max-width: 1150px) {
+  .container {
+    width: 90%;
+  }
+}
+
+@media (max-width: 900px) {
+  .main-grid {
+    grid-template-columns: 1fr;
+    /* Stack columns on smaller screens */
+  }
+
+  .form-grid {
+    grid-template-columns: 1fr;
+    /* Stack form fields */
+  }
+
+  .panel.about {
+    grid-column: 1 / 2;
+    /* Full width for about panel on small screens */
+  }
+}
+
+/* Utility helpers */
+.text-muted {
+  color: var(--muted)
+}
+
+.small {
+  font-size: 0.85rem
+}
+
+.center {
+  display: flex;
+  align-items: center;
+  justify-content: center
+}

@@ -1,0 +1,3 @@
+LogisticRegression: AUC=0.951, Acc=0.869
+RandomForest: AUC=0.958, Acc=0.902
+Saved models and metadata to: C:\Users\shres\OneDrive\Desktop\udb\backend\models
